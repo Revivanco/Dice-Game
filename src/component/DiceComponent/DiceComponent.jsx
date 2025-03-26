@@ -1,7 +1,8 @@
 import React from "react"
 
 
-const DiceComponent = ({number}) => {
+const DiceComponent = (props) => {
+    const {number} = props
     console.log(number)
     if (number === 1) {
         return (
