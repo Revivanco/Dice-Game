@@ -1,29 +1,38 @@
 import React, { useState } from "react";
 import DiceComponent from "./component/DiceComponent";
-import "./App.css"
+import "./App.css";
 import DiceButton from "./component/DiceButton";
-
-
 
 function tirarDado() {
   return Math.floor(Math.random() * 6) + 1;
 }
 
 function App() {
-  const [diceSide, setDiceSide] = useState(tirarDado())
-  let alternativeDiceSide = 4
+  const [dices, setDices] = useState([tirarDado()]); 
+
+
   const rollDice = () => {
-    setDiceSide(tirarDado())
-    alternativeDiceSide = 3
-    console.log(alternativeDiceSide)
-  }
+    setDices(dices.map(() => tirarDado())); 
+  };
+
+  const duplicateDice = () => {
+    setDices([...dices, tirarDado()]); 
+  };
+
   return (
     <div>
-      <DiceComponent number={diceSide} />
+      <div style={{ display: "flex", gap: "10px" }}>
+        {dices.map((number, index) => (
+          <DiceComponent key={index} number={number} />
+        ))}
+      </div>
+
       <DiceButton onRollDice={rollDice} />
+
+      <button onClick={duplicateDice}>Duplicar Dado</button>
     </div>
   );
-
 }
 
 export default App;
+
