@@ -12,7 +12,7 @@ function tirarDado() {
 function App() {
   const [diceSide, setDiceSide] = useState(tirarDado())
   let alternativeDiceSide = 4
-  const pruebas = () => {
+  const rollDice = () => {
     setDiceSide(tirarDado())
     alternativeDiceSide = 3
     console.log(alternativeDiceSide)
@@ -20,8 +20,7 @@ function App() {
   return (
     <div>
       <DiceComponent number={diceSide} />
-      <DiceButton />
-      <button onClick={pruebas}>otro boton</button>
+      <DiceButton onRollDice={rollDice} />
     </div>
   );
 

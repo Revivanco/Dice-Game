@@ -1,12 +1,9 @@
 import React from "react";
 
-function DiceButton() {
-    let diceSide = 2;
-
-    const pruebas = () => {
+function DiceButton({onRollDice}) {
+    const rollDice = () => {
         console.log("kushini pechochiniiiii");
-        diceSide += 1;
-        console.log(diceSide);
+        onRollDice()
     };
 
     const buttonStyle = {
@@ -22,10 +19,9 @@ function DiceButton() {
 
     return (
         <>
-            <button style={buttonStyle} onClick={pruebas}>
+            <button style={buttonStyle} onClick={rollDice}>
                 Tirar
             </button>
-            {diceSide}
         </>
     );
 }
